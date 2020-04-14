@@ -98,7 +98,7 @@ def dumpobj(obj: Any, isObj: bool = False, indent: int = -1, indent_scale: int =
         dumpobjstack = sys.maxsize * 2 + 1
     spacing = ""
     if (dumpobjstack < dumpstack and dumpsize == 0 and dumpobjsize == 1) or \
-            (dumpobjstack > dumpstack and dumpsize == 1 and dumpobjsize == 1):
+            (dumpobjstack == dumpstack == 1):
         spacing = " "*indent
     return spacing+_dumpobj(obj, isObj, indent, indent_scale)
 

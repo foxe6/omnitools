@@ -9,6 +9,11 @@ def jd(o: Any, **kwargs) -> str:
     return json.dumps(o, **kwargs)
 
 
+def jd_and_utf8e(o: Any, **kwargs) -> bytes:
+    from omnitools import utf8e
+    return utf8e(jd(o, **kwargs))
+
+
 def jl(s: str, **kwargs) -> Any:
     return json.loads(s, **kwargs)
 

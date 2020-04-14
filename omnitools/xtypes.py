@@ -37,7 +37,7 @@ class Obj(object):
     def __str__(self):
         return self.dump()
 
-    def dump(self, indent: int = 0, indent_scale: int = 4):
+    def dump(self, indent_scale: int = 4):
         from .js import dumpobj
-        return dumpobj(self.__org, isObj=True, indent=indent, indent_scale=indent_scale)
+        return dumpobj(self.__org, isObj=True, indent_scale=indent_scale)
 

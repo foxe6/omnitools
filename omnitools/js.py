@@ -77,31 +77,22 @@ def _dumpobj(obj: Any, isObj: bool = False, indent: int = -1, indent_scale: int 
             return f'''{type(obj).__name__}({str(obj)})'''
 
 
-def dumpobj(obj: Any, isObj: bool = False, indent_scale: int = 4) -> str:
-    # if indent >= 0 and indent % indent_scale != 0:
-    #     raise Exception(f"indent {indent} is not multiples of indent_scale {indent_scale}")
-    # import inspect
-    # from debugging.utils import where
-    # stack = [a[3] for a in inspect.stack()]
-    # dumpobjsize = len([_ for _ in stack if _ == inspect.stack()[1][3]])
-    # dumpsize = len([_ for _ in stack if _ == "dump"])
-    # stack.reverse()
-    # try:
-    #     dumpstack = stack.index("dump")
-    # except:
-    #     import sys
-    #     dumpstack = sys.maxsize * 2 + 1
-    # try:
-    #     dumpobjstack = stack.index(inspect.stack()[1][3])
-    # except:
-    #     import sys
-    #     dumpobjstack = sys.maxsize * 2 + 1
-    # spacing = ""
-    # if (dumpobjstack < dumpstack and dumpsize == 0 and dumpobjsize == 1) or \
-    #         (dumpobjstack == dumpstack and dumpsize == dumpobjsize == 1):
-    #     spacing = " "*indent
-    return _dumpobj(obj, isObj, 0, indent_scale)
-    # import textwrap
-    # return textwrap.indent(dumps, " "*indent)
+def dumpobj(obj: Any, isObj: bool = False, indent_scale: int = 0) -> str:
+    import inspect
+    stack = [a[3] for a in inspect.stack()]
+    dumpobjsize = len([_ for _ in stack if _ == inspect.stack()[1][3]])
+    dumpsize = len([_ for _ in stack if _ == "dump"])
+    indent = -1 if indent_scale <= 0 else 0
+    dumps = _dumpobj(obj, isObj, indent, indent_scale)
+    if dumpobjsize >= 2 and dumpobjsize == dumpsize:
+        dumpobjsize += 1
+        import textwrap
+        return textwrap.indent(dumps, " "*dumpobjsize*indent_scale)
+    elif dumpobjsize-1 >= 2 and dumpobjsize > dumpsize:
+        import textwrap
+        dumps = textwrap.indent(dumps, " "*dumpobjsize*indent_scale)
+        return dumps
+    else:
+        return dumps
 
 

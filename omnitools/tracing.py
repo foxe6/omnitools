@@ -30,7 +30,7 @@ def successstacks() -> tuple:
     return tuple(stacks)
 
 
-def _qualname(frame: FrameType, where: str) -> str:
+def _qualname(frame: FrameType, where: str = "") -> str:
     try:
         return f"'{qualname(frame)}'"
     except:

@@ -6,6 +6,6 @@ from .rng import *
 from .js import *
 from .inspecting import *
 
-version = "0.0.69"
+version = "0.0.70"
 keywords = ["omnitools utilities"]
 entry = "test:main"

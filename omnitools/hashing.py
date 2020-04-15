@@ -6,8 +6,8 @@ from . import str_or_bytes, try_utf8e
 __ALL__ = ["sha512", "mac"]
 
 
-def sha256(content: str_or_bytes) -> str:
-    return sha3_256(try_utf8e(content)).hexdigest()
+def sha256d(content: str_or_bytes) -> bytes:
+    return sha3_256(try_utf8e(content)).digest()
 
 
 def sha512(content: str_or_bytes) -> str:

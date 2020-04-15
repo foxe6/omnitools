@@ -7,6 +7,6 @@ from .js import *
 from .inspecting import *
 from .tracing import *
 
-version = "0.0.71"
+version = "0.0.72"
 keywords = ["omnitools utilities"]
 entry = "test:main"

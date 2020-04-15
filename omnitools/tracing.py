@@ -26,11 +26,14 @@ def successstacks() -> tuple:
         lineno = stack[2]
         filename = os.path.basename(stack[1])
         frame = stack[0]
-        stacks.append(_qualname(frame) + "@" + filename + ":" + str(lineno))
+        stacks.append(_qualname(frame, stack[3]) + "@" + filename + ":" + str(lineno))
     return tuple(stacks)
 
 
-def _qualname(frame: FrameType) -> str:
-    return f"'{qualname(frame)}'"
+def _qualname(frame: FrameType, where) -> str:
+    try:
+        return f"'{qualname(frame)}'"
+    except:
+        return f"'{name}'"
 
 

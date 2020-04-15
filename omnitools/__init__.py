@@ -5,6 +5,6 @@ from .hashing import *
 from .rng import *
 from .js import *
 
-version = "0.0.66"
+version = "0.0.67"
 keywords = ["omnitools utilities"]
 entry = "test:main"

@@ -73,7 +73,12 @@ def _dumpobj(obj: Any, isObj: bool = False, indent: int = -1, indent_scale: int 
                         tmp += " "
                 if do_indent:
                     tmp += " "*indent
-                tmp += f'''{_dumpobj(k)}{col}{_dumpobj(v, indent=indent, indent_scale=indent_scale)}'''
+                nextisObj = True if isinstance(v, Obj) else False
+                v = _dumpobj(v, indent=indent, indent_scale=indent_scale)
+                if nextisObj:
+                    import re
+                    v = v.replace(re.search(r"([ ]+)", v)[0], "", 1).replace(re.search(r"([ ]+)", v)[0][:-2], "")
+                tmp += f'''{_dumpobj(k)}{col}{v}'''
             if do_indent:
                 tmp += "\n"
                 tmp += " "*(indent-indent_scale)
@@ -97,7 +102,8 @@ def dumpobj(obj: Any, isObj: bool = False, indent_scale: int = 0) -> str:
     if dumpobjsize >= 2 and dumpobjsize == dumpsize:
         dumpobjsize += 1
         import textwrap
-        return textwrap.indent(dumps, " "*dumpobjsize*indent_scale)
+        dumps = textwrap.indent(dumps, " "*(dumpobjsize)*indent_scale)
+        return dumps
     elif dumpobjsize-1 >= 2 and dumpobjsize > dumpsize:
         import textwrap
         dumps = textwrap.indent(dumps, " "*dumpobjsize*indent_scale)

@@ -1,4 +1,4 @@
-__version__ = "0.0.77"
+__version__ = "0.0.78"
 __keywords__ = ["omnitools utilities"]
 
 

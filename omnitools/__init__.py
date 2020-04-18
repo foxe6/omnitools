@@ -1,6 +1,5 @@
-__version__ = "0.0.75"
+__version__ = "0.0.76"
 __keywords__ = ["omnitools utilities"]
-__entry__ = "test:main"
 
 
 # if not __version__.endswith(".0"):
@@ -19,4 +18,5 @@ from .rng import *
 from .js import *
 from .inspecting import *
 from .tracing import *
+from .misc import *
 

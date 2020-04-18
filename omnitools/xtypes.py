@@ -7,6 +7,7 @@ __ALL__ = ["str_or_bytes", "list_or_dict", "key_pair_format", "encryptedsocket_f
 str_or_bytes = Union[str, bytes]
 list_or_dict = Union[list, dict]
 list_or_tuple = Union[list, tuple]
+bytes_or_tuple = Union[bytes, tuple]
 key_pair_format = Dict[str, bytes]
 encryptedsocket_function = Dict[str, Callable[[Any], Any]]
 

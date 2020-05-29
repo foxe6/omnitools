@@ -5,7 +5,7 @@ from . import str_or_bytes, try_utf8e
 import _io
 
 
-__ALL__ = ["sha256d", "sha512hd", "mac", "crc32hd", "hd_update", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
+__ALL__ = ["sha256d", "sha512hd", "mac", "crc32hd", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
 
 
 def sha256d(content: str_or_bytes) -> bytes:
@@ -35,7 +35,7 @@ def crc32hd(_input):
     return format(hd, "x").zfill(8)
 
 
-def hd_update(_input, hd):
+def _hd_update(_input, hd) -> str:
     if isinstance(_input, _io.BufferedReader):
         while True:
             data = _input.read(1024*8)
@@ -49,22 +49,22 @@ def hd_update(_input, hd):
     return hd.hexdigest()
 
 
-def md5hd(_input):
-    return hd_update(_input, md5())
+def md5hd(_input) -> str:
+    return _hd_update(_input, md5())
 
 
-def sha1hd(_input):
-    return hd_update(_input, sha1())
+def sha1hd(_input) -> str:
+    return _hd_update(_input, sha1())
 
 
-def sha256hd(_input):
-    return hd_update(_input, sha256())
+def sha256hd(_input) -> str:
+    return _hd_update(_input, sha256())
 
 
-def sha384hd(_input):
-    return hd_update(_input, sha384())
+def sha384hd(_input) -> str:
+    return _hd_update(_input, sha384())
 
 
-def sha512hd(_input):
-    return hd_update(_input, sha512())
+def sha512hd(_input) -> str:
+    return _hd_update(_input, sha512())
 

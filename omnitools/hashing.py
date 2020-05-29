@@ -28,7 +28,7 @@ def crc32hd(_input):
             if not data:
                 break
             hd = crc32(data, hd)
-    elif isinstance(_input, str_or_bytes):
+    elif isinstance(_input, (str, bytes)):
         hd = crc32(try_utf8e(_input), hd)
     else:
         raise Exception(f"input type {type(_input)} not implemented")
@@ -42,7 +42,7 @@ def hd_update(_input, hd):
             if not data:
                 break
             hd.update(data)
-    elif isinstance(_input, str_or_bytes):
+    elif isinstance(_input, (str, bytes)):
         hd.update(try_utf8e(_input))
     else:
         raise Exception(f"input type {type(_input)} not implemented")

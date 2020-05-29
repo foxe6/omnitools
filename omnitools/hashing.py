@@ -5,7 +5,7 @@ from . import str_or_bytes, try_utf8e
 import _io
 
 
-__ALL__ = ["sha256d", "sha512hd", "mac", "hd_update", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
+__ALL__ = ["sha256d", "sha512hd", "mac", "crc32hd", "hd_update", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
 
 
 def sha256d(content: str_or_bytes) -> bytes:
@@ -22,7 +22,7 @@ def mac(key: str_or_bytes, content: str_or_bytes, method=sha3_512) -> str:
 
 def crc32hd(_input):
     hd = 0
-    if isinstance(_input, _io.BufferedWriter):
+    if isinstance(_input, _io.BufferedReader):
         while True:
             data = _input.read(1024*8)
             if not data:
@@ -36,7 +36,7 @@ def crc32hd(_input):
 
 
 def hd_update(_input, hd):
-    if isinstance(_input, _io.BufferedWriter):
+    if isinstance(_input, _io.BufferedReader):
         while True:
             data = _input.read(1024*8)
             if not data:

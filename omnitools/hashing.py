@@ -42,6 +42,7 @@ def _hd_update(_input, hd) -> str:
             if not data:
                 break
             hd.update(data)
+        _input.seek(0)
     elif isinstance(_input, (str, bytes)):
         hd.update(try_utf8e(_input))
     else:

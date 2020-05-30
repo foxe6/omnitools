@@ -31,7 +31,8 @@ omnitools
 |   '---- sha512()
 |---- rng
 |   |---- randb()
-|   '---- randi()
+|   |---- randi()
+|   '---- randstr()
 |---- stdout
 |   '---- p()
 '---- type

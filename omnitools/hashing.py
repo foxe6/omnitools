@@ -28,6 +28,7 @@ def crc32hd(_input):
             if not data:
                 break
             hd = crc32(data, hd)
+        _input.seek(0)
     elif isinstance(_input, (str, bytes)):
         hd = crc32(try_utf8e(_input), hd)
     else:

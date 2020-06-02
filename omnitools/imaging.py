@@ -8,7 +8,7 @@ def text_with_padding(font: PIL.ImageFont.FreeTypeFont, text: str, padding: int 
     ascent, descent = font.getmetrics()
     (width, baseline), (offset_x, offset_y) = font.font.getsize(text)
     height = ascent+descent
-    if padding > 0:
+    if padding >= 0:
         padding = (padding, padding)
     else:
         padding = (offset_y+descent, descent-offset_y)

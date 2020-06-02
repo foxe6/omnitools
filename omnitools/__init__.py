@@ -1,4 +1,4 @@
-__version__ = "0.0.88"
+__version__ = "0.0.89"
 __keywords__ = ["omnitools utilities"]
 
 
@@ -19,4 +19,5 @@ from .js import *
 from .inspecting import *
 from .tracing import *
 from .misc import *
+from .imaging import *
 

@@ -18,7 +18,7 @@ open("README.md", "wb").write(readme.encode("utf-8"))
 description = re.search(r"<i>(.*?)</i>", readme)[1]
 setup(
     name="omnitools",
-    version="0.0.91",
+    version="0.0.92",
     keywords=["omnitools utilities"],
     packages=find_packages(),
     url="https://github.com/foxe6/omnitools",

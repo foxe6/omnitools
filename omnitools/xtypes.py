@@ -1,7 +1,7 @@
 from typing import *
 
 
-__ALL__ = ["str_or_bytes", "list_or_dict", "key_pair_format", "encryptedsocket_function", "Obj"]
+__ALL__ = ["str_or_bytes", "list_or_dict", "list_or_tuple", "bytes_or_list", "key_pair_format", "color_value", "encryptedsocket_function", "Obj"]
 
 
 str_or_bytes = Union[str, bytes]
@@ -9,6 +9,7 @@ list_or_dict = Union[list, dict]
 list_or_tuple = Union[list, tuple]
 bytes_or_list = Union[bytes, list]
 key_pair_format = Dict[str, bytes]
+color_value = Tuple[int, int, int]
 encryptedsocket_function = Dict[str, Callable[[Any], Any]]
 
 

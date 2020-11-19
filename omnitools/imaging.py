@@ -1,7 +1,7 @@
 import PIL.ImageFont
 
 
-__ALL__ = "text_with_padding"
+__ALL__ = "textbox"
 
 
 def textbox(font: PIL.ImageFont.FreeTypeFont, text: str, padding: int = -1) -> tuple:

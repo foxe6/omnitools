@@ -5,14 +5,14 @@ from . import str_or_bytes, try_utf8e
 import _io
 
 
-__ALL__ = ["sha256d", "sha512hd", "mac", "crc32hd", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
+__ALL__ = ["sha256d", "sha3_512hd", "mac", "crc32hd", "md5hd", "sha1hd", "sha256hd", "sha384hd", "sha512hd"]
 
 
 def sha256d(content: str_or_bytes) -> bytes:
     return sha3_256(try_utf8e(content)).digest()
 
 
-def sha512hd(content: str_or_bytes) -> str:
+def sha3_512hd(content: str_or_bytes) -> str:
     return sha3_512(try_utf8e(content)).hexdigest()
 
 

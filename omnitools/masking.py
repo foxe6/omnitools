@@ -2,6 +2,9 @@ import re
 import math
 
 
+__ALL__ = ["mask"]
+
+
 def mask(string: str, coverage: float = 0.5):
     if re.search(r"^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$", string):
         string = string.split("@")

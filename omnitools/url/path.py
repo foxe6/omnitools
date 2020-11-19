@@ -5,8 +5,8 @@ from lxml import html
 def rlookup(path):
     if not path.endswith("/"):
         path = "/".join(path.split("/")[:-1])
-    if len(path) > 0:
-        path += "/"
+        if len(path) > 0:
+            path += "/"
     r = s.get(domain+path).content.decode()
     r = html.fromstring(r)
     hrefs = r.xpath("//a/@href")
@@ -20,6 +20,7 @@ def rlookup(path):
         if href.startswith("#") or href.startswith("/") or href == url or href.find("..") >= 0:
             continue
         elif href.startswith(url):
+            # print(url, href, path)
             if url != "":
                 href = href.replace(domain+path, "")
             if not href in paths:
@@ -64,14 +65,14 @@ def rlookup(path):
 #             pass
 # open(r"D:\foxe6\mooc.result.txt", "wb").write(results.encode())
 # exit()
-domain = "https://archive.rhilip.info/"
-# domain = "https://archive.org/"
+# domain = "https://archive.rhilip.info/"
+domain = "https://archive.org/"
 s = requests.Session()
 s.headers.update({"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36"})
 paths = []
-rlookup("index.md")
+# rlookup("index.md")
 # rlookup("学习资料/MOOC公开课程/")
-# rlookup("download/footest2/")
+rlookup("download/footest2/a")
 files = [path for path in paths if not path.endswith("/")]
 print(files)
 # txt = ""

@@ -15,5 +15,5 @@ def randi(power: int = 6) -> int:
     return random.randint(10 ** power, 10 ** (power + 1) - 1)
 
 
-def randstr(length: int, extra_str: str) -> str:
+def randstr(length: int, extra_str: str = "") -> str:
     return "".join(random.SystemRandom().choice(string.ascii_letters+string.digits+extra_str) for _ in range(length))
